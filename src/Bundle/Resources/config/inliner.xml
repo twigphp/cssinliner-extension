@@ -10,12 +10,5 @@
         <service id="twig.extension.cssinliner" class="Twig\CssInliner\CssInlinerExtension">
             <tag name="twig.extension" />
         </service>
-
-        <service id="twig.runtime.cssinliner" class="Twig\CssInliner\CssInlinerRuntime">
-            <argument type="service" id="twig.cssinliner" />
-            <tag name="twig.runtime" />
-        </service>
-
-        <service id="twig.cssinliner" class="TijsVerkoyen\CssToInlineStyles\CssToInlineStyles" />
     </services>
 </container>

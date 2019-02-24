@@ -11,14 +11,26 @@
 
 namespace Twig\CssInliner;
 
+use TijsVerkoyen\CssToInlineStyles\CssToInlineStyles;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 
 class CssInlinerExtension extends AbstractExtension
 {
-    public function getTokenParsers()
+    public function getFilters()
     {
         return [
-            new InlineCssTokenParser(),
+            new TwigFilter('inline_css', 'Twig\\CssInliner\\twig_inline_css', ['is_safe' => ['all']]),
         ];
     }
+}
+
+function twig_inline_css(string $body, string ...$css): string
+{
+    static $inliner;
+    if (null === $inliner) {
+        $inliner = new CssToInlineStyles();
+    }
+
+    return $inliner->convert($body, implode("\n", $css));
 }
