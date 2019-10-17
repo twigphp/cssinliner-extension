@@ -1,6 +1,8 @@
 Twig CSS Inliner Extension
 ==========================
 
+**WARNINIG**: This package is deprecate; migrate to `twig/cssinliner-extra` instead.
+
 This package provides a CSS inliner filter (`inline_css`) for Twig and a Symfony
 bundle.
 
